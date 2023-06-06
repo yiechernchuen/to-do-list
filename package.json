@@ -1,0 +1,28 @@
+{
+    "name": "to-do-list",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "watch": "webpack --watch",
+        "build": "webpack"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/yiechernchuen/To-Do-List.git"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/yiechernchuen/To-Do-List/issues"
+    },
+    "homepage": "https://github.com/yiechernchuen/To-Do-List#readme",
+    "devDependencies": {
+        "css-loader": "^6.8.1",
+        "style-loader": "^3.3.3",
+        "webpack": "^5.85.1",
+        "webpack-cli": "^5.1.3"
+    }
+}
