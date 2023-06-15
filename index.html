@@ -7,5 +7,32 @@
         <script src="main.js" defer></script>
         <title>To-Do List</title>
     </head>
-    <body></body>
+    <body>
+        <header>
+            <h1 class="title">To-Do List</h1>
+        </header>
+        <div class="container">
+            <div class="sidebar">
+                <button class="inboxBtn tabBtns">Inbox</button>
+                <button class="deletedBtn tabBtns">Done</button>
+                <div class="sidebarProject">
+                    <h1 class="sidebarHeader">Projects</h1>
+                    <button class="projectBtn"><span>+</span>Add Project</button>
+                </div>
+            </div>
+            <div class="tab inbox">
+                <h1 class="contentHeader">Inbox</h1>
+                <form class="inboxForm">
+                    <input class="input" type="text" required />
+                    <input class="submit" type="submit" value="Enter" />
+                </form>
+            </div>
+            <div class="tab done">
+                <header>
+                    <h1 class="doneHeader">Completed</h1>
+                </header>
+            </div>
+        </div>
+        <footer>Copyright © 2023 yiechernchuen</footer>
+    </body>
 </html>
