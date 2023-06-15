@@ -1,0 +1,69 @@
+html {
+    box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+.container {
+    flex-grow: 1;
+    display: flex;
+}
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+.tab {
+    display: flex;
+    /* display: none; */
+    flex-direction: column;
+    align-items: center;
+    flex-grow: 1;
+}
+
+.inbox {
+    display: none;
+    display: flex;
+}
+form {
+    width: 70%;
+    display: flex;
+}
+.input {
+    flex-grow: 1;
+}
+.list {
+    width: 70%;
+    display: flex;
+}
+div > p {
+    flex-grow: 1;
+}
+.edit,
+.tick,
+.cross {
+    cursor: pointer;
+}
+.project {
+    display: none;
+}
+.done {
+    display: none;
+}
+footer {
+    margin-top: auto;
+}
