@@ -1,11 +1,5 @@
-import { tabSwitching } from './index';
+import { tabSwitching, setInboxStorage, setProjectStorage, setDoneStorage } from './index';
 import { updateDoneTab } from './doneTab';
-
-class Todo {
-    constructor(description) {
-        this.description = description;
-    }
-}
 
 function createToDoList(toDoValue) {
     const div = document.createElement('div');
@@ -23,7 +17,7 @@ function createToDoList(toDoValue) {
     input.readOnly = true;
     span1.textContent = '📝';
     span2.textContent = '✔️';
-    span3.textContent = '❌';
+    span3.textContent = '🗑️';
     div.append(input, span1, span2, span3);
     editTodo(input, span1);
     doneTodo(div, span2, input);
@@ -39,6 +33,8 @@ function appendCreatedList(createdList) {
 function editTodo(input, edit) {
     input.addEventListener('blur', () => {
         input.readOnly = true;
+        setInboxStorage();
+        setProjectStorage();
     });
     edit.addEventListener('click', () => {
         input.readOnly = false;
@@ -50,12 +46,17 @@ function doneTodo(div, tick, input) {
     tick.addEventListener('click', () => {
         div.remove();
         updateDoneTab(input);
+        setInboxStorage();
+        setProjectStorage();
+        setDoneStorage();
     });
 }
 
 function deleteTodo(div, cross) {
     cross.addEventListener('click', () => {
         div.remove();
+        setInboxStorage();
+        setProjectStorage();
     });
 }
 
@@ -63,6 +64,8 @@ function submit(e) {
     e.preventDefault();
     appendCreatedList(createToDoList(e.target[0].value));
     form.reset();
+    setInboxStorage();
+    setProjectStorage();
 }
 
 const form = document.querySelector('.inboxForm');
@@ -72,4 +75,5 @@ const inboxBtn = document.querySelector('.inboxBtn');
 inboxBtn.addEventListener('click', (e) => {
     tabSwitching(e, 'inbox');
 });
-export { createToDoList };
+
+export { createToDoList, appendCreatedList };

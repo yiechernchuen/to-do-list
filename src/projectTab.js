@@ -1,3 +1,4 @@
+import { setProjectStorage } from './index';
 import { createToDoList } from './inboxTab';
 
 function createToDoTab(title) {
@@ -25,6 +26,7 @@ function submit(e) {
     e.preventDefault();
     e.target.parentElement.appendChild(createToDoList(e.target[0].value));
     e.target.reset();
+    setProjectStorage();
 }
 
 export { createToDoTab };

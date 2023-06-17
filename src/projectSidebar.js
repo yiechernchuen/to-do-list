@@ -1,7 +1,7 @@
-import { tabSwitching } from './index';
+import { tabSwitching, setProjectSidebarStorage, setProjectStorage } from './index';
 import { createToDoTab } from './projectTab';
 
-function addProject() {
+function addProject(inputValue) {
     const div = document.createElement('div');
     const form = document.createElement('form');
     const input = document.createElement('input');
@@ -13,6 +13,7 @@ function addProject() {
     cross.classList.add('projectCross');
     input.type = 'text';
     input.required = true;
+    if (inputValue) input.value = inputValue;
     tick.type = 'submit';
     tick.textContent = '✔️';
     cross.textContent = '❌';
@@ -37,17 +38,27 @@ function projectTick(e) {
         addClassToProjectBtnAndTab();
         tabSwitching(e, e.target.classList[2]);
     });
+    setProjectSidebarStorage();
 }
+
 function projectDelete(e) {
     const div = e.target.parentElement.parentElement;
-    const projectTabToDelete = e.target.form[0];
+    const projectSidebarInput = e.target.form[0];
     div.remove();
-    projectBtn.style.display = 'inline-block';
-    if (!document.querySelector('.projectTick') && projectTabToDelete.classList[2]) {
-        document.querySelector(`.tab.${projectTabToDelete.classList[2]}`).remove();
-        document.querySelector('.inboxBtn').click();
+    if (document.querySelector('.projectTick')) {
+        projectBtn.style.display = 'none';
+    } else {
+        projectBtn.style.display = 'inline-block';
     }
+    const projectToBeDelete = document.querySelector(`.tab.${projectSidebarInput.classList[2]}`);
+    if (projectToBeDelete) {
+        projectToBeDelete.remove();
+        if (!document.querySelector('.active')) document.querySelector('.inboxBtn').click();
+    }
+
     addClassToProjectBtnAndTab();
+    setProjectSidebarStorage();
+    setProjectStorage();
 }
 
 function addClassToProjectBtnAndTab() {
@@ -63,4 +74,7 @@ const projectBtn = document.querySelector('.projectBtn');
 projectBtn.addEventListener('click', (e) => {
     projectBtn.style.display = 'none';
     e.target.parentElement.appendChild(addProject());
+    document.querySelector('.projectInput[required]').focus();
 });
+
+export { addProject };
