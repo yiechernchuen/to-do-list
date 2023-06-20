@@ -4,35 +4,53 @@
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
+            crossorigin="anonymous" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=Roboto&family=Yusei+Magic&display=swap" rel="stylesheet" />
+        <link rel="icon" type="image/x-icon" href="./favicon.ico" />
+        <script src="https://kit.fontawesome.com/62754bb2af.js" crossorigin="anonymous"></script>
         <script src="main.js" defer></script>
         <title>To-Do List</title>
     </head>
     <body>
-        <header>
-            <h1 class="title">To-Do List</h1>
+        <header class="header">
+            <h1 class="h1"><i class="fa-solid fa-list-ul" style="color: #ffffff"></i>To-Do List</h1>
+            <h1 class="h1"><i class="fa-solid fa-angles-down" style="color: #ffffff"></i></h1>
         </header>
-        <div class="container">
+        <div id="container">
             <div class="sidebar">
-                <button class="inboxBtn tabBtns">Inbox</button>
-                <button class="deletedBtn tabBtns">Done</button>
+                <button class="inboxBtn tabBtns btn btn-primary">Inbox</button>
+                <button class="deletedBtn tabBtns btn btn-primary">Done</button>
                 <div class="sidebarProject">
-                    <h1 class="sidebarHeader">Projects</h1>
-                    <button class="projectBtn"><span>+</span>Add Project</button>
+                    <h2 class="h2">Projects</h2>
+                    <button class="projectBtn btn btn-secondary">
+                        <i class="fa-solid fa-plus" style="color: #ffffff"></i> Add Project
+                    </button>
+                    <div class="projectUserInputContainerParent"></div>
                 </div>
             </div>
             <div class="tab inbox">
-                <h1 class="contentHeader">Inbox</h1>
-                <form class="inboxForm">
+                <h2 class="h2">Inbox</h2>
+                <form class="toDoForm">
                     <input class="input" type="text" required />
-                    <input class="submit" type="submit" value="Enter" />
+                    <button class="submitBtn btn btn-success" type="submit">Enter</button>
                 </form>
             </div>
             <div class="tab done">
                 <header>
-                    <h1 class="doneHeader">Completed</h1>
+                    <h2 class="h2 doneHeader">Completed</h2>
                 </header>
             </div>
         </div>
-        <footer>Copyright © 2023 yiechernchuen</footer>
+        <footer>
+            Copyright © 2023 yiechernchuen
+            <a href="https://github.com/yiechernchuen" target="_blank"> <i class="fa-brands fa-github"></i></a>
+        </footer>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     </body>
 </html>
