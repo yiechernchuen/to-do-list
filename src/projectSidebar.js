@@ -7,10 +7,10 @@ function addProject(inputValue) {
     const input = document.createElement('input');
     const tick = document.createElement('button');
     const cross = document.createElement('button');
-    div.classList.add('projectUserInputContainer');
+    div.classList.add('projectUserInputContainerChild');
     input.classList.add('projectInput', 'tabBtns');
-    tick.classList.add('projectTick');
-    cross.classList.add('projectCross');
+    tick.classList.add('projectTick', 'btn');
+    cross.classList.add('projectCross', 'btn');
     input.type = 'text';
     input.required = true;
     if (inputValue) input.value = inputValue;
@@ -71,10 +71,22 @@ function addClassToProjectBtnAndTab() {
 }
 
 const projectBtn = document.querySelector('.projectBtn');
-projectBtn.addEventListener('click', (e) => {
+projectBtn.addEventListener('click', () => {
     projectBtn.style.display = 'none';
-    e.target.parentElement.appendChild(addProject());
+    const div = document.querySelector('.projectUserInputContainerParent');
+    div.appendChild(addProject());
     document.querySelector('.projectInput[required]').focus();
+});
+
+const navBarDropDownMenu = document.querySelector('.fa-angles-down');
+navBarDropDownMenu.addEventListener('click', (e) => {
+    const sidebar = document.querySelector('.sidebar');
+    getComputedStyle(sidebar).display === 'none' ? (sidebar.style.display = 'flex') : (sidebar.style.display = 'none');
+});
+
+window.addEventListener('resize', () => {
+    const sidebar = document.querySelector('.sidebar');
+    if (window.outerWidth > 700) sidebar.removeAttribute('style');
 });
 
 export { addProject };

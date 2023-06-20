@@ -58,10 +58,10 @@ function setProjectSidebarStorage() {
 
 function getProjectSidebarStorage() {
     const projectTitleStorage = JSON.parse(localStorage.getItem('sidebarProject'));
-    const sidebarProject = document.querySelector('.sidebarProject');
+    const projectSidebarBox = document.querySelector('.projectUserInputContainerParent');
     if (projectTitleStorage) {
         projectTitleStorage.forEach((value) => {
-            sidebarProject.appendChild(addProject(value));
+            projectSidebarBox.appendChild(addProject(value));
             document.querySelector('.projectTick').click();
         });
     }

@@ -68,7 +68,7 @@ function submit(e) {
     setProjectStorage();
 }
 
-const form = document.querySelector('.inboxForm');
+const form = document.querySelector('.inbox .toDoForm');
 form.addEventListener('submit', submit);
 
 const inboxBtn = document.querySelector('.inboxBtn');
