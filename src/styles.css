@@ -18,12 +18,16 @@ body {
     flex-direction: column;
     min-height: 100vh;
     font-family: 'Roboto', sans-serif;
-    background-color: #dbd9d9;
+}
+
+input {
+    border: none;
+    outline: none;
 }
 
 .header {
-    background-color: #242222;
-    padding: 1rem;
+    background-color: hsl(209, 75%, 38%);
+    padding: 1.5rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -31,54 +35,90 @@ body {
     color: white;
 }
 
+.header h1 {
+    margin-bottom: 0;
+}
+
+.projectHeader,
+.inboxHeader,
+.doneHeader {
+    font-size: 2rem;
+}
+
 .fa-list-ul {
-    padding-right: 1rem;
+    padding-right: 0.5rem;
 }
 .fa-angles-down {
     display: none;
+    cursor: pointer;
 }
-.h2 {
+.h1 {
     font-weight: bold;
     margin: 0;
+    margin-bottom: 0.5rem;
 }
 #container {
     flex-grow: 1;
     display: flex;
+    background-color: #e9ecef;
 }
 .sidebar {
     display: flex;
     flex-direction: column;
     padding: 2rem 3rem;
-    gap: 1.1rem;
-    border-right: 1px solid rgb(182, 180, 180);
+    gap: 1.5rem;
+    background-color: #ced4da;
+    box-shadow: 1px 0 1px -1px rgba(0, 0, 0, 0.2);
+}
+
+.tabBtnsContainer {
+    display: grid;
+    gap: 1rem;
 }
 
 .sidebarProject {
     display: flex;
     flex-direction: column;
-    gap: 3px;
+}
+.btn {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
 }
 .inboxBtn,
 .deletedBtn,
 .projectBtn {
     width: 200px;
+    font-size: 1.2rem;
 }
 .projectBtn {
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.8rem;
+}
+
+.projectUserInputContainerParent {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
 }
 
 .projectUserInputContainerChild {
     margin-bottom: 5px;
 }
 .projectInput {
+    width: 200px;
     padding-left: 7px;
-    background-color: rgba(0, 0, 0, 0);
-    border: 2px solid grey;
+    background-color: #e7f5ff;
+    box-shadow: 0 0 2px rgb(0, 0, 0, 0.5);
     border-radius: 20px;
+    margin-right: 5px;
 }
 .projectInput:focus-visible {
     outline: none;
-    border: 2px solid rgb(0, 187, 9);
+    border: none;
+    box-shadow: 0 0 2px rgb(24, 100, 171);
+}
+
+.projectInput:invalid {
+    background-color: #fff;
 }
 
 .projectCross,
@@ -89,9 +129,10 @@ body {
 .tab {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    flex-grow: 1;
-    padding: 2rem 1rem;
+    text-align: center;
+    margin: 0 auto;
+    width: max(30rem, 40%);
+    padding: 2rem;
 }
 
 .inbox {
@@ -102,40 +143,63 @@ body {
     gap: 0.5rem;
 }
 form {
-    width: 70%;
     display: flex;
 }
 .input {
     flex-grow: 1;
     border-radius: 20px;
-    border: 2px solid grey;
+    border: none;
+    outline: none;
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
     padding-left: 7px;
 }
 .input:focus-visible {
     outline: none;
-    border: 2px solid rgb(50, 78, 238);
+    border: none;
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.4);
+}
+.input:valid {
+    background-color: #e7f5ff;
 }
 .submitBtn {
     padding: 0 1rem;
 }
 
 .list {
-    width: 70%;
     display: flex;
-    border-radius: 20px;
+    border-radius: 0.8rem;
     align-items: center;
-    padding: 0.5rem;
+    padding: 0.5rem 0;
+    padding-right: 7px;
 }
 .list:hover {
-    background-color: rgb(187, 187, 187);
+    background-color: #d0ebff;
+    box-shadow: 0 0 2px #1864ab49;
+}
+
+.iconContainer {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: center;
+    align-items: center;
+}
+
+i.fa-pen-to-square {
+    color: #0c6efd;
+}
+
+i.fa-check {
+    color: #1b995e;
+}
+i.fa-xmark {
+    color: #e13647;
 }
 
 .input2 {
     flex-grow: 1;
     padding-left: 7px;
-    margin-right: 0.5rem;
     border: none;
-    background-color: rgba(0, 0, 0, 0);
+    background-color: transparent;
 }
 .input2:focus-visible {
     outline: none;
@@ -152,17 +216,20 @@ form {
     display: none;
 }
 .doneHeader {
-    margin-bottom: 0.5rem;
-    text-decoration: underline;
+    margin-bottom: 1rem;
+}
+.doneList {
+    text-align: start;
+    margin-bottom: 3px;
 }
 
 footer {
     margin-top: auto;
-    background-color: #272525;
+    background-color: hsl(209, 75%, 38%);
     color: white;
-    padding: 1rem;
+    padding: 0.5rem;
     text-align: center;
-    font-size: 1.2rem;
+    font-size: 1rem;
 }
 .fa-github {
     color: white;
@@ -173,7 +240,25 @@ footer {
     transform: rotate(360deg) scale(1.25);
 }
 
-@media screen and (max-width: 700px) {
+@media (max-width: 850px) {
+    .sidebar {
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
+
+    .inboxBtn,
+    .deletedBtn,
+    .projectBtn {
+        width: 10rem;
+        font-size: 1.2rem;
+    }
+
+    .projectInput {
+        width: 10rem;
+    }
+}
+
+@media (max-width: 630px) {
     #container {
         flex-direction: column;
     }
@@ -184,30 +269,70 @@ footer {
 
     .sidebar {
         display: none;
+        grid-template-columns: 1fr 1fr;
+        justify-items: center;
+        align-items: baseline;
         padding: 1rem;
-        align-items: flex-start;
+        gap: 1rem;
         background-color: rgb(218, 227, 235);
     }
 
     .sidebarProject {
-        align-items: flex-start;
+        align-self: center;
     }
+
+    .projectHeader {
+        text-align: center;
+        margin-bottom: 1rem;
+    }
+
     .inboxBtn,
     .deletedBtn,
     .projectBtn {
         width: 200px;
     }
 
-    .tab {
-        align-items: flex-start;
-    }
-    .h2 {
-        padding-left: 15px;
-    }
-    .toDoForm {
-        padding-left: 7px;
-    }
     .doneHeader {
         padding: 0;
+    }
+}
+
+@media (max-width: 485px) {
+    .sidebar {
+        padding: 1rem 2rem;
+        grid-template-columns: 1fr;
+    }
+
+    .tab {
+        padding: 0.8rem;
+        padding-top: 1.5rem;
+        width: 90%;
+    }
+
+    .projectHeader {
+        margin-bottom: 0.5rem;
+    }
+
+    .inboxHeader,
+    .tab .projectHeader {
+        padding-left: 7px;
+    }
+
+    .projectHeader,
+    .inboxHeader,
+    .doneHeader {
+        font-size: 1.8rem;
+    }
+}
+
+@media (max-width: 375px) {
+    .sidebar {
+        justify-items: flex-start;
+    }
+
+    .inboxHeader,
+    .projectHeader,
+    .doneHeader {
+        text-align: start;
     }
 }

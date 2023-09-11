@@ -7,16 +7,20 @@ function addProject(inputValue) {
     const input = document.createElement('input');
     const tick = document.createElement('button');
     const cross = document.createElement('button');
+    const tickIcon = document.createElement('i');
+    const crossIcon = document.createElement('i');
     div.classList.add('projectUserInputContainerChild');
     input.classList.add('projectInput', 'tabBtns');
     tick.classList.add('projectTick', 'btn');
     cross.classList.add('projectCross', 'btn');
+    tickIcon.classList.add('fa-solid', 'fa-check', 'fa-lg');
+    crossIcon.classList.add('fa-solid', 'fa-xmark', 'fa-lg');
+    tick.append(tickIcon);
+    cross.append(crossIcon);
     input.type = 'text';
     input.required = true;
     if (inputValue) input.value = inputValue;
     tick.type = 'submit';
-    tick.textContent = '✔️';
-    cross.textContent = '❌';
     form.append(input, tick, cross);
     div.append(form);
     cross.addEventListener('click', projectDelete);
@@ -42,8 +46,8 @@ function projectTick(e) {
 }
 
 function projectDelete(e) {
-    const div = e.target.parentElement.parentElement;
-    const projectSidebarInput = e.target.form[0];
+    const div = e.currentTarget.parentElement.parentElement;
+    const projectSidebarInput = e.currentTarget.form[0];
     div.remove();
     if (document.querySelector('.projectTick')) {
         projectBtn.style.display = 'none';
@@ -81,12 +85,12 @@ projectBtn.addEventListener('click', () => {
 const navBarDropDownMenu = document.querySelector('.fa-angles-down');
 navBarDropDownMenu.addEventListener('click', (e) => {
     const sidebar = document.querySelector('.sidebar');
-    getComputedStyle(sidebar).display === 'none' ? (sidebar.style.display = 'flex') : (sidebar.style.display = 'none');
+    getComputedStyle(sidebar).display === 'none' ? (sidebar.style.display = 'grid') : (sidebar.style.display = 'none');
 });
 
 window.addEventListener('resize', () => {
     const sidebar = document.querySelector('.sidebar');
-    if (window.outerWidth > 700) sidebar.removeAttribute('style');
+    if (window.outerWidth > 630) sidebar.removeAttribute('style');
 });
 
 export { addProject };
