@@ -1,3 +1,7 @@
+:root {
+    --bs-body-font-family: 'Roboto', sans-serif;
+}
+
 html {
     box-sizing: border-box;
 }
@@ -17,7 +21,6 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    font-family: 'Roboto', sans-serif;
 }
 
 input {
@@ -26,13 +29,17 @@ input {
 }
 
 .header {
-    background-color: hsl(209, 75%, 38%);
     padding: 1.5rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
     font-family: 'Yusei Magic', sans-serif;
     color: white;
+}
+
+.header,
+footer {
+    background-color: #0d6efd;
 }
 
 .header h1 {
@@ -81,7 +88,6 @@ input {
     flex-direction: column;
 }
 .btn {
-    font-family: 'Roboto', sans-serif;
     font-weight: 500;
 }
 .inboxBtn,
@@ -167,10 +173,14 @@ form {
 
 .list {
     display: flex;
-    border-radius: 0.8rem;
+    border-radius: 1rem;
     align-items: center;
     padding: 0.5rem 0;
     padding-right: 7px;
+    box-shadow: 0 0 2px rgb(0, 0, 0, 0.4);
+}
+.list:not(:first-of-type) {
+    margin-top: 1rem;
 }
 .list:hover {
     background-color: #d0ebff;
@@ -225,7 +235,6 @@ i.fa-xmark {
 
 footer {
     margin-top: auto;
-    background-color: hsl(209, 75%, 38%);
     color: white;
     padding: 0.5rem;
     text-align: center;
